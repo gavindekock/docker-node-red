@@ -1,11 +1,12 @@
-FROM node:latest
+FROM nodered/node-red-docker
 
-MAINTAINER Gavin de Kock <gavindekock@users.noreply.github.com>
+LABEL maintainer="https://github.com/gavindekock/docker-node-red"
 
-RUN npm -g install node-red node-red-node-mongodb node-red-node-sqlite node-red-node-pushover node-red-node-tfl node-red-node-weather-underground node-red-node-ping node-red-node-suncalc
-
-EXPOSE 1880
-
-VOLUME /nodered/
-
-ENTRYPOINT ["/usr/local/bin/node-red", "-v", "--userDir","/nodered/","flows_nodered.json"]
+RUN npm install \ 
+node-red-node-mongodb \
+node-red-node-sqlite \
+node-red-node-pushover \
+node-red-node-tfl \
+node-red-node-weather-underground \
+node-red-node-ping \
+node-red-node-suncalc
